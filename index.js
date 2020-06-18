@@ -79,10 +79,31 @@ console.log(personOne.stomach);
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon){
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
 
+const carOne = new Car('Beetle', 26);
+Car.prototype.fill = function(gallons){
+  this.tank = gallons;
+}
+Car.prototype.drive = function(distance){
+  if (this.tank >= 26){
+    return (this.odometer + 1);
+  }else if (this.odometer + 1){
+    return (this.tank = 0);
+  }else (this.tank = 0);{
+    return (`I ran out of fuel at ${this.odometer} miles!`);
+  }  
+}
+
+carOne.fill(15)
+console.log(carOne.fill);
+carOne.drive(30)
+console.log(carOne.drive);
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -90,10 +111,16 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
-
+function Baby(name, age, favoriteToy) {
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
 }
-
+Baby.prototype.play = function(){
+  return `Playing with ${this.favoriteToy}`;
+}
+const babyOne = new Baby('Meredith', '6 months', 'plush duck')
+babyOne.eat('pureed carrots')
 /* 
   TASK 4
 
