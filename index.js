@@ -88,22 +88,22 @@ function Car(model, milesPerGallon){
 
 const carOne = new Car('Beetle', 26);
 Car.prototype.fill = function(gallons){
-  this.tank = gallons;
+  return this.tank += gallons;
 }
-Car.prototype.drive = function(distance){
-  if (this.tank >= 26){
-    return (this.odometer + 1);
-  }else if (this.odometer + 1){
-    return (this.tank = 0);
-  }else (this.tank = 0);{
-    return (`I ran out of fuel at ${this.odometer} miles!`);
-  }  
-}
+// Car.prototype.drive = function(distance){
+//   if (this.tank >= 26){
+//     return (this.odometer + 1);
+//   }else if (this.odometer + 1){
+//     return (this.tank = 0);
+//   }else (this.tank = 0);{
+//     return (`I ran out of fuel at ${this.odometer} miles!`);
+//   }  
+// }
 
 carOne.fill(15)
 console.log(carOne.fill);
-carOne.drive(30)
-console.log(carOne.drive);
+// carOne.drive(30)
+// console.log(carOne.drive);
 /*
   TASK 3
     - Write a Baby constructor subclassing Person.
@@ -111,6 +111,14 @@ console.log(carOne.drive);
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
+
+function Baby(babyName, babyAge, favoriteToy){
+  Person.call(this, babyName, babyAge) // binding this to parent 
+  this.isBaby = favoriteToy.isBaby; // this will be for any special attributes to the child }
+}
+
+Baby.prototype = Object.create(Person.prototype);
+
 function Baby(name, age, favoriteToy) {
   this.name = name;
   this.age = age;
@@ -120,15 +128,15 @@ Baby.prototype.play = function(){
   return `Playing with ${this.favoriteToy}`;
 }
 const babyOne = new Baby('Meredith', '6 months', 'plush duck')
-babyOne.eat('pureed carrots')
-/* 
+
+/*
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. If in global, this refers to the Window.
+  2. Implicit binding - this refers to what is to the left of the . when the finction is invoked.
+  3. New binding -  in constructor functions, this refers to the new object being created.
+  4. Explicit binding - this is explicitly defined using .call and . apply.
 */
 
 
